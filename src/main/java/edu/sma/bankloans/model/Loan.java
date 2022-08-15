@@ -1,9 +1,9 @@
 package edu.sma.bankloans.model;
-
 import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class Loan {
+
     private String id;
     private String name;
     private LoanType idType;
@@ -41,6 +41,12 @@ public class Loan {
         this.updatedAt = updatedAt;
     }
 
+    public Loan(Loan loan, String id, String name)
+    {
+        this.id=id;
+        this.name=name;
+        this.idType = loan.getIdType();
+    }
     public String getId() {
         return id;
     }
