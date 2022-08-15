@@ -28,6 +28,19 @@ public class Loan {
         this.dateRefund = dateRefund;
     }
 
+    public Loan(String id, String name, LoanType idType, Customer idCustomer, double sum, Payment payment, LocalDateTime dateIssuance, LocalDateTime dateRefund, LocalDateTime createdAt, LocalDateTime updatedAt) {
+        this.id = id;
+        this.name = name;
+        this.idType = idType;
+        this.idCustomer = idCustomer;
+        this.sum = sum;
+        this.payment = payment;
+        this.dateIssuance = dateIssuance;
+        this.dateRefund = dateRefund;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
+
     public String getId() {
         return id;
     }
