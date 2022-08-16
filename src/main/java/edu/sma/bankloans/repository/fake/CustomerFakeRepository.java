@@ -1,21 +1,20 @@
-package edu.sma.bankloans.service.loan.impls;
+package edu.sma.bankloans.repository.fake;
 
 import edu.sma.bankloans.model.Customer;
 import edu.sma.bankloans.model.LoanHistory;
 import edu.sma.bankloans.model.Profession;
 import edu.sma.bankloans.model.Property;
-import edu.sma.bankloans.repository.CustomerFakeRepository;
-import edu.sma.bankloans.service.loan.interfaces.ICustomerService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.UUID;
 
-@Service
-public class CustomerServiceImpl implements ICustomerService {
+@Repository
+public class CustomerFakeRepository {
+
     private LocalDateTime now = LocalDateTime.now();
     private Customer customer;
     private List<Customer> customers = new ArrayList<>(
@@ -25,32 +24,31 @@ public class CustomerServiceImpl implements ICustomerService {
                     new Customer("3", "00000", "Customer3",true, 18, new Profession(), new Property(), "---", "+ ---", "--- ---", new LoanHistory(), now, now),
                     new Customer("4", "00000", "Customer4",true, 30, new Profession(), new Property(), "---", "+ ---", "--- ---", new LoanHistory(), now, now)
             ));
-        @Autowired
-        CustomerFakeRepository repository;
 
-        @Override
-        public Customer create(Customer customer) {
-            return repository.save(customer);
-        }
-
-        @Override
-        public Customer update(Customer customer) {
-            return repository.update(customer);
-        }
-
-        @Override
-        public Customer get(String id) {
-            return repository.findById(id);
-        }
-
-        @Override
-        public void delete(String id) {
-            repository.deleteById(id);
-        }
-
-        @Override
-        public List<Customer> getAll() {
-            return repository.findAll();
-        }
+    public List<Customer> findAll() {
+        return this.customers;
     }
 
+    public Customer findById(String id) {
+        return this.customers.stream().filter(Customer -> Customer.getId().equals(id)).findFirst().orElse(null);
+    }
+
+    public Customer update(Customer Customer) {
+        this.deleteById(Customer.getId());
+        Customer.setUpdatedAt(LocalDateTime.now());
+        this.customers.add(Customer);
+        return Customer;
+    }
+
+    public void deleteById(String id) {
+        Customer Customer = this.findById(id);
+        this.customers.remove(Customer);
+    }
+
+    public Customer save(Customer Customer) {
+        Customer.setId(UUID.randomUUID().toString());
+        Customer.setCreatedAt(LocalDateTime.now());
+        this.customers.add(Customer);
+        return null;
+    }
+}

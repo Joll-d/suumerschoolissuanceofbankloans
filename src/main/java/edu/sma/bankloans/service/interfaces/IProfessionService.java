@@ -1,4 +1,4 @@
-package edu.sma.bankloans.service.loan.interfaces;
+package edu.sma.bankloans.service.interfaces;
 
 import edu.sma.bankloans.model.Profession;
 

@@ -1,13 +1,18 @@
 package edu.sma.bankloans.model;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.time.LocalDateTime;
 import java.util.Objects;
 
+@Document
 public class Loan {
 
+    @Id
     private String id;
     private String name;
-    private LoanType idType;
-    private Customer idCustomer;
+    private LoanType type;
+    private Customer customer;
     private double sum;
     private Payment payment;
     private LocalDateTime dateIssuance;
@@ -18,21 +23,21 @@ public class Loan {
     public Loan() {
     }
 
-    public Loan(String name, LoanType idType, Customer idCustomer, double sum, Payment payment, LocalDateTime dateIssuance, LocalDateTime dateRefund) {
+    public Loan(String name, LoanType type, Customer customer, double sum, Payment payment, LocalDateTime dateIssuance, LocalDateTime dateRefund) {
         this.name = name;
-        this.idType = idType;
-        this.idCustomer = idCustomer;
+        this.type = type;
+        this.customer = customer;
         this.sum = sum;
         this.payment = payment;
         this.dateIssuance = dateIssuance;
         this.dateRefund = dateRefund;
     }
 
-    public Loan(String id, String name, LoanType idType, Customer idCustomer, double sum, Payment payment, LocalDateTime dateIssuance, LocalDateTime dateRefund, LocalDateTime createdAt, LocalDateTime updatedAt) {
+    public Loan(String id, String name, LoanType type, Customer customer, double sum, Payment payment, LocalDateTime dateIssuance, LocalDateTime dateRefund, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.id = id;
         this.name = name;
-        this.idType = idType;
-        this.idCustomer = idCustomer;
+        this.type = type;
+        this.customer = customer;
         this.sum = sum;
         this.payment = payment;
         this.dateIssuance = dateIssuance;
@@ -45,7 +50,7 @@ public class Loan {
     {
         this.id=id;
         this.name=name;
-        this.idType = loan.getIdType();
+        this.type = loan.getType();
     }
     public String getId() {
         return id;
@@ -63,20 +68,20 @@ public class Loan {
         this.name = name;
     }
 
-    public LoanType getIdType() {
-        return idType;
+    public LoanType getType() {
+        return type;
     }
 
-    public void setIdType(LoanType idType) {
-        this.idType = idType;
+    public void setType(LoanType type) {
+        this.type = type;
     }
 
-    public Customer getIdCustomer() {
-        return idCustomer;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setIdCustomer(Customer idCustomer) {
-        this.idCustomer = idCustomer;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
     public double getSum() {
@@ -145,8 +150,8 @@ public class Loan {
         return "Loan{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
-                ", idType=" + idType +
-                ", idCustomer=" + idCustomer +
+                ", idType=" + type +
+                ", idCustomer=" + customer +
                 ", sum=" + sum +
                 ", payment=" + payment +
                 ", dateIssuance=" + dateIssuance +

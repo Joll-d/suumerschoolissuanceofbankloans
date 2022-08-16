@@ -1,4 +1,4 @@
-package edu.sma.bankloans.repository;
+package edu.sma.bankloans.repository.fake;
 import edu.sma.bankloans.model.Property;
 import org.springframework.stereotype.Repository;
 

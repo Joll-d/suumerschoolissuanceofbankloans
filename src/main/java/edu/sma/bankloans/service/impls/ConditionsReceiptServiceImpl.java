@@ -1,11 +1,12 @@
-package edu.sma.bankloans.service.loan.impls;
+package edu.sma.bankloans.service.impls;
 
 import edu.sma.bankloans.model.ConditionsReceipt;
-import edu.sma.bankloans.repository.ConditionsFakeRepository;
-import edu.sma.bankloans.service.loan.interfaces.IConditionsReceiptService;
+import edu.sma.bankloans.repository.mongo.ConditionsReceiptMongoRepository;
+import edu.sma.bankloans.service.interfaces.IConditionsReceiptService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -20,7 +21,12 @@ public class ConditionsReceiptServiceImpl implements IConditionsReceiptService {
                     new ConditionsReceipt("2","Conditions2", 25, 60, 15000, 12, now, now)
             ));
         @Autowired
-        ConditionsFakeRepository repository;
+        ConditionsReceiptMongoRepository repository;
+
+        @PostConstruct
+        void init(){
+            repository.saveAll(conditionsReceipts);
+        }
 
         @Override
         public ConditionsReceipt create(ConditionsReceipt conditionsReceipt) {
@@ -29,12 +35,12 @@ public class ConditionsReceiptServiceImpl implements IConditionsReceiptService {
 
         @Override
         public ConditionsReceipt update(ConditionsReceipt conditionsReceipt) {
-            return repository.update(conditionsReceipt);
+            return repository.save(conditionsReceipt);
         }
 
         @Override
         public ConditionsReceipt get(String id) {
-            return repository.findById(id);
+            return repository.findById(id).get();
         }
 
         @Override

@@ -1,7 +1,7 @@
 package edu.sma.bankloans.controller.api;
 
 import edu.sma.bankloans.model.Customer;
-import edu.sma.bankloans.service.loan.impls.CustomerServiceImpl;
+import edu.sma.bankloans.service.impls.CustomerServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
