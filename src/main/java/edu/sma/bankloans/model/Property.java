@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class Property {
-    private String id;
+    private String id = "1";
     private String name;
     private String type;
     private double cost;

@@ -4,13 +4,13 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class LoanType {
-    private String id;
-    private String name;
+    private String id = "1";
+    private String name = "none";
     private ConditionsReceipt conditions;
-    private double amountMin;
-    private double amountMax;
-    private double rate;
-    private int term;
+    private double amountMin = 0;
+    private double amountMax = 0;
+    private double rate = 0;
+    private int term = 0;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 

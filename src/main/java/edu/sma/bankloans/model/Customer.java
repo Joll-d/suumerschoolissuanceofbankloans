@@ -4,9 +4,9 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class Customer {
-    private String id;
+    private String id = "1";
     private String passportID;
-    private String name;
+    private String name = "none";
     private boolean family;
     private int age;
     private Profession profession;

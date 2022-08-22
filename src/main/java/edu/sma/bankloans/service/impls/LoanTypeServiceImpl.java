@@ -19,9 +19,9 @@ public class LoanTypeServiceImpl implements ILoanTypeService {
     private LoanType loanType;
     private List<LoanType> loanTypes = new ArrayList<>(
             Arrays.asList(
-                    new LoanType("1", "LoanType1", new ConditionsReceipt(), 1000, 10000, 15, 12, now, now),
-                    new LoanType("2", "LoanType2", new ConditionsReceipt(), 1000, 25000, 12, 12, now, now),
-                    new LoanType("3", "LoanType3", new ConditionsReceipt(), 10000, 100000, 9, 36, now, now)
+                    new LoanType("1", "LoanType1", new ConditionsReceipt("1","Conditions1", 18, 60, 10000, 4, now, now), 1000, 10000, 15, 12, now, now),
+                    new LoanType("2", "LoanType2", new ConditionsReceipt("1","Conditions1", 18, 60, 10000, 4, now, now), 1000, 25000, 12, 12, now, now),
+                    new LoanType("3", "LoanType3", new ConditionsReceipt("1","Conditions1", 18, 60, 10000, 4, now, now), 10000, 100000, 9, 36, now, now)
             ));
     @Autowired
     LoanTypeMongoRepository repository;
@@ -55,4 +55,5 @@ public class LoanTypeServiceImpl implements ILoanTypeService {
     public List<LoanType> getAll() {
         return repository.findAll();
     }
+
 }

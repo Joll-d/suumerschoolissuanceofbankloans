@@ -18,6 +18,7 @@ public class PaymentServiceImpl implements IPaymentService {
     private Payment loan;
     private List<Payment> payments = new ArrayList<>(
             Arrays.asList(
+                    new Payment("1","1",1000,now,now,now,now)
             ));
     @Autowired
     PaymentMongoRepository repository;

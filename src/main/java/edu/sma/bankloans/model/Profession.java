@@ -4,8 +4,8 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class Profession {
-    private String id;
-    private String name;
+    private String id = "1";
+    private String name = "none";
     private int workExperience;
     private double salary;
     private LocalDateTime createdAt;

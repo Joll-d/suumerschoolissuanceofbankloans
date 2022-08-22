@@ -15,15 +15,16 @@ import java.util.List;
 @Service
 public class PropertyServiceImpl implements IPropertyService {
     private LocalDateTime now = LocalDateTime.now();
-    private List<Property> propertys = new ArrayList<>(
+    private List<Property> property = new ArrayList<>(
             Arrays.asList(
+                    new Property("1", "House", "House", 2000000, now, now)
             ));
     @Autowired
     PropertyMongoRepository repository;
 
     @PostConstruct
     void init() {
-        repository.saveAll(propertys);
+        repository.saveAll(property);
     }
 
     @Override

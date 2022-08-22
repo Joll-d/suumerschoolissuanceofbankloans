@@ -71,7 +71,6 @@ public class Loan {
     public LoanType getType() {
         return type;
     }
-
     public void setType(LoanType type) {
         this.type = type;
     }

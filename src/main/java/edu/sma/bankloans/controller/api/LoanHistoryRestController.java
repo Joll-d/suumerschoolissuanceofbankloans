@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RequestMapping("/api/v1/customer/loan-history")
+@RequestMapping("/api/v1/customer/loan-history/")
 @RestController
 public class LoanHistoryRestController {
     @Autowired

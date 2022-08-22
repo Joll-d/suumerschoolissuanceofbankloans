@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RequestMapping("/api/v1/customer/property")
+@RequestMapping("/api/v1/customers/property/")
 @RestController
 public class PropertyRestController {
     @Autowired

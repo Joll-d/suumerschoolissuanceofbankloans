@@ -17,6 +17,7 @@ public class ProfessionServiceImpl implements IProfessionService {
     private LocalDateTime now = LocalDateTime.now();
     private List<Profession> professions = new ArrayList<>(
             Arrays.asList(
+                    new Profession("1", "Engineer",2,3000,now,now)
             ));
     @Autowired
     ProfessionMongoRepository repository;

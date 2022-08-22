@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RequestMapping("/api/v1/customer/profession")
+@RequestMapping("/api/v1/customers/profession/")
 @RestController
 public class ProfessionRestController {
     @Autowired
