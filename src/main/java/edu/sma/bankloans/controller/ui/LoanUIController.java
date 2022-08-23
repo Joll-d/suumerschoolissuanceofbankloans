@@ -29,7 +29,11 @@ public class LoanUIController {
     @GetMapping("")
     public String showOne(Model model) {
         model.addAttribute("loans", service.getAll());
-
+        LoanForm loanForm = new LoanForm();
+        model.addAttribute("types", serviceType.getAll());
+        model.addAttribute("customers", serviceCustomer.getAll());
+        model.addAttribute("payments", servicePayment.getAll());
+        model.addAttribute("form", loanForm);
         return "loans";
     }
 
@@ -39,20 +43,9 @@ public class LoanUIController {
         return "redirect:/ui/v1/loans/";
     }
 
-    @GetMapping("/add")
-    public String addLoan(Model model){
-        LoanForm loanForm = new LoanForm();
-        model.addAttribute("types", serviceType.getAll());
-        model.addAttribute("typesId", serviceType.getAll());
-        model.addAttribute("customers", serviceCustomer.getAll());
-        model.addAttribute("form", loanForm);
-        return "addLoan";
-    }
-
     @PostMapping("/add")
     public String addLoan(@ModelAttribute("form") LoanForm form){
         Loan loan = new Loan();
-        loan.setId("111");
         loan.setName(form.getName());
         loan.setType(serviceType.get(form.getType()));
         loan.setCustomer(serviceCustomer.get(form.getCustomer()));

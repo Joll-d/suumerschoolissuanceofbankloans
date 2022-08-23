@@ -1,9 +1,14 @@
 package edu.sma.bankloans.model;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.time.LocalDateTime;
 import java.util.Objects;
 
+@Document
 public class LoanType {
+    @Id
     private String id = "1";
     private String name = "none";
     private ConditionsReceipt conditions;
