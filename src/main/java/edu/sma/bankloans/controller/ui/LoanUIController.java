@@ -28,6 +28,8 @@ public class LoanUIController {
     CustomerServiceImpl serviceCustomer;
     @GetMapping("")
     public String showOne(Model model) {
+        String updateID = "";
+        model.addAttribute("updateID", updateID);
         model.addAttribute("loans", service.getAll());
         LoanForm loanForm = new LoanForm();
         model.addAttribute("types", serviceType.getAll());
@@ -60,4 +62,21 @@ public class LoanUIController {
 
     }
 
+    @PostMapping("/edit/{id}")
+    public String updateLoan(@ModelAttribute("form") LoanForm form, @PathVariable("id") String id){
+        Loan loanToUpdate = new Loan();
+        loanToUpdate.setId(id);
+        loanToUpdate.setName(form.getName());
+        loanToUpdate.setType(serviceType.get(form.getType()));
+        loanToUpdate.setCustomer(serviceCustomer.get(form.getCustomer()));
+        loanToUpdate.setSum(form.getSum());
+        loanToUpdate.setPayment(servicePayment.get(form.getPayment()));
+        loanToUpdate.setDateIssuance(LocalDateTime.now());
+        loanToUpdate.setDateRefund(LocalDateTime.now());
+        loanToUpdate.setCreatedAt(service.get(id).getCreatedAt());
+        loanToUpdate.setUpdatedAt(LocalDateTime.now());
+        service.update(loanToUpdate);
+        return "redirect:/ui/v1/loans/";
+
+    }
 }

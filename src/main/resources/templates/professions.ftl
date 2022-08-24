@@ -46,7 +46,7 @@
 
 <h1>Hello, type!</h1>
 <button type="button" class="btn btn-dark"><a href="/ui/v1/loans/">loans</a></button>
-<button type="button" class="btn btn-dark"><a href="/ui/v1/customer/">customers</a></button>
+<button type="button" class="btn btn-dark"><a href="/ui/v1/customers/">customers</a></button>
 <button type="button" class="btn btn-dark"><a href="/ui/v1/loans/types/">types</a></button>
 <button type="button" class="btn btn-dark"><a href="/ui/v1/loans/types/conditions/">conditions</a></button>
 <button type="button" class="btn btn-fake">professions</button>

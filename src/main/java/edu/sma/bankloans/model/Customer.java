@@ -9,9 +9,9 @@ import java.util.Objects;
 
 public class Customer {
     @Id
-    private String id = "1";
+    private String id;
     private String passportID;
-    private String name = "none";
+    private String name;
     private boolean family;
     private int age;
     private Profession profession;
