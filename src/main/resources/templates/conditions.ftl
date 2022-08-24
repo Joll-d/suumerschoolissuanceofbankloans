@@ -233,7 +233,7 @@
         <td>${condition.createdAt}</td>
         <td>${condition.updatedAt}</td>
         <td>
-            <button type="button" class="btn btn-success">Update</button>
+            <button type="button" class="btn btn-success" onclick="getID(${condition.id})">Update</button>
         </td>
         <td>
             <a href="http://localhost:8080/ui/v1/loans/types/conditions/del/${condition.id}">
@@ -289,5 +289,49 @@
         </form>
     </div>
 </div>
+
+<#--Update menu-->
+<div class="hover_bkgr_fricc" id="update">
+    <span class="helper"></span>
+    <div>
+        <div class="popupCloseButton">&times;</div>
+        <h1>Create</h1>
+        <form action="/ui/v1/loans/types/conditions/edit/{ID}" method="post" id="updateForm">
+            <fieldset>
+                <table>
+                    <th></th>
+                    <th></th>
+                    <tr>
+                        <td><label for="name">Name:</label></td>
+                        <td><input type="text" name="name"><br></td>
+                    </tr>
+                    <tr>
+                        <td><label for="name">Age min:</label></td>
+                        <td><input type="text" name="ageMin"><br></td>
+                    </tr>
+                    <tr>
+                        <td><label for="name">Age max:</label></td>
+                        <td><input type="text" name="ageMax"><br></td>
+                    </tr>
+                    <tr>
+                        <td><label for="sum">Salary min:</label></td>
+                        <td><input type="text" name="salaryMin"><br></td>
+                    </tr>
+                    <tr>
+                        <td><label for="sum">Work experience:</label></td>
+                        <td><input type="text" name="workExperience"><br></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <button type="submit" class="btn btn-success">Create</button>
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+        </form>
+    </div>
+</div>
+
 </body>
 </html>

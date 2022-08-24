@@ -50,4 +50,20 @@ public class ConditionsReceiptUIController {
         return "redirect:/ui/v1/loans/types/conditions/";
 
     }
+
+    @PostMapping("/edit/{id}")
+    public String updateConditionsReceipt(@ModelAttribute("form") ConditionsReceiptForm form, @PathVariable("id") String id){
+        ConditionsReceipt conditionsReceipt = new ConditionsReceipt();
+        conditionsReceipt.setId(id);
+        conditionsReceipt.setName(form.getName());
+        conditionsReceipt.setAgeMin(form.getAgeMin());
+        conditionsReceipt.setAgeMax(form.getAgeMax());
+        conditionsReceipt.setSalaryMin(form.getSalaryMin());
+        conditionsReceipt.setWorkExperience(form.getWorkExperience());
+        conditionsReceipt.setCreatedAt(service.get(id).getCreatedAt());
+        conditionsReceipt.setUpdatedAt(LocalDateTime.now());
+        service.update(conditionsReceipt);
+        return "redirect:/ui/v1/loans/types/conditions/";
+
+    }
 }
