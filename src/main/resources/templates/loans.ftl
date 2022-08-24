@@ -192,10 +192,11 @@
             });
         });
 
-        function getID(ID) {
+        function getID(ID, name, sum) {
             $("#update").show();
             $("#updateForm").attr("action", $("#updateForm").attr("action").replace("{ID}", ID));
-
+            $("#name").attr("value", name);
+            $("#sum").attr("value", sum);
         }
 
     </script>
@@ -235,7 +236,7 @@
                    class="link1">${loan.type.name}</a>
             </td>
             <td><a href="http://localhost:8080/ui/v1/customers/${loan.customer.id}"
-                   class="link1">${loan.customer.id}</a></td>
+                   class="link1">${loan.customer.name}</a></td>
             <td>${loan.sum}</td>
             <td>${loan.payment}</td>
             <td>${loan.dateIssuance}</td>
@@ -243,7 +244,7 @@
             <td>${loan.createdAt}</td>
             <td>${loan.updatedAt}</td>
             <td>
-                <a class="trigger_popup_fricc" onclick="getID('${loan.id}')">
+                <a class="trigger_popup_fricc" onclick="getID('${loan.id}','${loan.name}','${loan.sum}')">
                     <button type="button" class="btn btn-success">Update</button>
                 </a>
             </td>
@@ -333,7 +334,7 @@
                     <th></th>
                     <tr>
                         <td><label for="name">Name:</label></td>
-                        <td><input type="text" id="name" name="name"><br></td>
+                        <td><input type="text" id="name" name="name" value=""><br></td>
                     </tr>
                     <tr>
                         <td><label for="type">Type:</label></td>
@@ -361,7 +362,7 @@
                     </tr>
                     <tr>
                         <td><label for="sum">Sum:</label></td>
-                        <td><input type="text" id="sum" name="sum"><br></td>
+                        <td><input type="text" id="sum" name="sum" value=""><br></td>
                     </tr>
                     <tr>
                         <td><label for="payment">Payment:</label></td>

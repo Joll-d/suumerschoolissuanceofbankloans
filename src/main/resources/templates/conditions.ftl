@@ -191,9 +191,14 @@
             });
         });
 
-        function getID(ID) {
+        function getID(ID,name,ageMin,ageMax,salaryMin,workExperience) {
             $("#update").show();
             $("#updateForm").attr("action", $("#updateForm").attr("action").replace("{ID}", ID));
+            $("#name").attr("value", name);
+            $("#ageMin").attr("value", ageMin);
+            $("#ageMax").attr("value", ageMax);
+            $("#salaryMin").attr("value", salaryMin);
+            $("#workExperience").attr("value", workExperience);
 
         }
 
@@ -233,7 +238,7 @@
         <td>${condition.createdAt}</td>
         <td>${condition.updatedAt}</td>
         <td>
-            <button type="button" class="btn btn-success" onclick="getID('${condition.id}')">Update</button>
+            <button type="button" class="btn btn-success" onclick="getID('${condition.id}','${condition.name}','${condition.ageMin}','${condition.ageMax}','${condition.salaryMin}','${condition.workExperience}')">Update</button>
         </td>
         <td>
             <a href="http://localhost:8080/ui/v1/loans/types/conditions/del/${condition.id}">
@@ -303,23 +308,23 @@
                     <th></th>
                     <tr>
                         <td><label for="name">Name:</label></td>
-                        <td><input type="text" name="name"><br></td>
+                        <td><input type="text" name="name" id="name" value=""><br></td>
                     </tr>
                     <tr>
                         <td><label for="name">Age min:</label></td>
-                        <td><input type="text" name="ageMin"><br></td>
+                        <td><input type="text" name="ageMin" id="ageMin" value=""><br></td>
                     </tr>
                     <tr>
                         <td><label for="name">Age max:</label></td>
-                        <td><input type="text" name="ageMax"><br></td>
+                        <td><input type="text" name="ageMax" id="ageMax" value=""><br></td>
                     </tr>
                     <tr>
                         <td><label for="sum">Salary min:</label></td>
-                        <td><input type="text" name="salaryMin"><br></td>
+                        <td><input type="text" name="salaryMin" id="salaryMin" value=""><br></td>
                     </tr>
                     <tr>
                         <td><label for="sum">Work experience:</label></td>
-                        <td><input type="text" name="workExperience"><br></td>
+                        <td><input type="text" name="workExperience" id="workExperience" value=""><br></td>
                     </tr>
                     <tr>
                         <td></td>

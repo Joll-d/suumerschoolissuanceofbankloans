@@ -191,9 +191,12 @@
             });
         });
 
-        function getID(ID) {
+        function getID(ID,name,workExperience,salary) {
             $("#update").show();
             $("#updateForm").attr("action", $("#updateForm").attr("action").replace("{ID}", ID));
+            $("#name").attr("value", name);
+            $("#workExperience").attr("value", workExperience);
+            $("#salary").attr("value", salary);
 
         }
 
@@ -230,7 +233,7 @@
             <td>${profession.createdAt}</td>
             <td>${profession.updatedAt}</td>
             <td>
-                <button type="button" class="btn btn-success" onclick="getID('${profession.id}')">Update</button>
+                <button type="button" class="btn btn-success" onclick="getID('${profession.id}','${profession.name}','${profession.workExperience}','${profession.salary}')">Update</button>
             </td>
             <td>
                 <a href="http://localhost:8080/ui/v1/customer/professions/del/${profession.id}">
@@ -294,15 +297,15 @@
                     <th></th>
                     <tr>
                         <td><label for="name">Name:</label></td>
-                        <td><input type="text" name="name"><br></td>
+                        <td><input type="text" name="name" id="name" value=""><br></td>
                     </tr>
                     <tr>
                         <td><label for="name">Work experience:</label></td>
-                        <td><input type="text" name="workExperience"><br></td>
+                        <td><input type="text" name="workExperience" id="workExperience" value=""><br></td>
                     </tr>
                     <tr>
                         <td><label for="name">Salary:</label></td>
-                        <td><input type="text" name="salary"><br></td>
+                        <td><input type="text" name="salary" id="salary" value=""><br></td>
                     </tr>
                     <tr>
                         <td></td>

@@ -6,6 +6,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <style>
+        .checkmark {
+            height: 35px;
+            width: 35px;
+            background-color: #eee;
+        }
         input {
             display: block;
             font-size: 16px;
@@ -191,9 +196,16 @@
             });
         });
 
-        function getID(ID) {
+        function getID(ID, passportID, name, age, address, phone, contactPerson) {
             $("#update").show();
             $("#updateForm").attr("action", ('/ui/v1/customers/edit/' + ID));
+            $("#passportID").attr("value", passportID);
+            $("#name").attr("value", name);
+            $("#age").attr("value", age);
+            $("#address").attr("value", address);
+            $("#phone").attr("value", phone);
+            $("#contactPerson").attr("value", contactPerson);
+
 
         }
 
@@ -243,7 +255,7 @@
         <td>${customer.createdAt}</td>
         <td>${customer.updatedAt}</td>
         <td>
-            <a onclick="getID('${customer.id}')">
+            <a onclick="getID('${customer.id}','${customer.passportID}','${customer.name}','${customer.age}', '${customer.address}','${customer.phone}','${customer.contactPerson}')">
                 <button type="button" class="btn btn-success">Update</button>
             </a>
         </td>
@@ -346,19 +358,19 @@
                     <th></th>
                     <tr>
                         <td><label for="passportID">Passport ID:</label></td>
-                        <td><input type="text" name="passportID"><br></td>
+                        <td><input type="text" name="passportID" id="passportID" value=""><br></td>
                     </tr>
                     <tr>
                         <td><label for="name">Name:</label></td>
-                        <td><input type="text" name="name"><br></td>
+                        <td><input type="text" name="name" id="name" value=""><br></td>
                     </tr>
                     <tr>
                         <td><label for="name">Family:</label></td>
-                        <td><input type="checkbox" name="family"><br></td>
+                        <td><input type="checkbox" name="family" class="checkmark" id="family" value=""><br></td>
                     </tr>
                     <tr>
                         <td><label for="name">Age:</label></td>
-                        <td><input type="text" name="age"><br></td>
+                        <td><input type="text" name="age" id="age" value=""><br></td>
                     </tr>
                     <tr>
                         <td><label for="type">Profession:</label></td>
@@ -382,11 +394,11 @@
                     </tr>
                     <tr>
                         <td><label for="name">Address:</label></td>
-                        <td><input type="text" name="address"><br></td>
+                        <td><input type="text" name="address" id="address" value=""><br></td>
                     </tr>
                     <tr>
                         <td><label for="name">Phone:</label></td>
-                        <td><input type="text" name="phone"><br></td>
+                        <td><input type="text" name="phone" placeholder="123-45-678" id="phone" value=""><br></td>
                     </tr>
                     <tr>
                         <td><br></td>
@@ -394,7 +406,7 @@
                     </tr>
                     <tr>
                         <td><label for="sum">contactPerson:</label></td>
-                        <td><input type="text" name="contactPerson"><br></td>
+                        <td><input type="text" name="contactPerson" id="contactPerson" value=""><br></td>
                     </tr>
                     <tr>
                         <td></td>

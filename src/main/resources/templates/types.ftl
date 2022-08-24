@@ -191,9 +191,14 @@
             });
         });
 
-        function getID(ID) {
+        function getID(ID,name,amountMin,amountMax,rate,term) {
             $("#update").show();
             $("#updateForm").attr("action", $("#updateForm").attr("action").replace("{ID}", ID));
+            $("#name").attr("value", name);
+            $("#amountMin").attr("value", amountMin);
+            $("#amountMax").attr("value", amountMax);
+            $("#rate").attr("value", rate);
+            $("#term").attr("value", term);
 
         }
 
@@ -235,7 +240,7 @@
         <td>${type.createdAt}</td>
         <td>${type.updatedAt}</td>
         <td>
-            <button type="button" class="btn btn-success" onclick="getID('${type.id}')">Update</button>
+            <button type="button" class="btn btn-success" onclick="getID('${type.id}','${type.name}','${type.amountMin}','${type.amountMax}','${type.rate}','${type.term}')">Update</button>
         </td>
         <td>
             <a href="http://localhost:8080/ui/v1/loans/types/del/${type.id}">
@@ -319,7 +324,7 @@
                     <th></th>
                     <tr>
                         <td><label for="name">Name:</label></td>
-                        <td><input type="text" name="name"><br></td>
+                        <td><input type="text" name="name" id="name" value=""><br></td>
                     </tr>
                     <tr>
                         <td><label for="type">Conditions:</label></td>
@@ -335,11 +340,11 @@
                     </tr>
                     <tr>
                         <td><label for="name">Amount min:</label></td>
-                        <td><input type="text" name="amountMin"><br></td>
+                        <td><input type="text" name="amountMin" id="amountMin" value=""><br></td>
                     </tr>
                     <tr>
                         <td><label for="name">Amount max:</label></td>
-                        <td><input type="text" name="amountMax"><br></td>
+                        <td><input type="text" name="amountMax" id="amountMax" value=""><br></td>
                     </tr>
                     <tr>
                         <td><br></td>
@@ -347,11 +352,11 @@
                     </tr>
                     <tr>
                         <td><label for="sum">Rate:</label></td>
-                        <td><input type="text" name="rate"><br></td>
+                        <td><input type="text" name="rate" id="rate" value=""><br></td>
                     </tr>
                     <tr>
                         <td><label for="sum">Term:</label></td>
-                        <td><input type="text" name="term"><br></td>
+                        <td><input type="text" name="term" id="term" value=""><br></td>
                     </tr>
                     <tr>
                         <td></td>
