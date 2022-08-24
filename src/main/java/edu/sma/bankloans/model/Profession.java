@@ -9,8 +9,8 @@ import java.util.Objects;
 @Document
 public class Profession {
     @Id
-    private String id = "1";
-    private String name = "none";
+    private String id;
+    private String name;
     private int workExperience;
     private double salary;
     private LocalDateTime createdAt;
