@@ -1,7 +1,5 @@
 package edu.sma.bankloans.form;
 
-import edu.sma.bankloans.model.LoanHistory;
-
 public class CustomerForm {
     private String passportID;
     private String name ;
@@ -12,12 +10,11 @@ public class CustomerForm {
     private String address;
     private String phone;
     private String contactPerson;
-    private LoanHistory loanHistory;
 
     public CustomerForm() {
     }
 
-    public CustomerForm(String passportID, String name, boolean family, int age, String profession, String property, String address, String phone, String contactPerson, LoanHistory loanHistory) {
+    public CustomerForm(String passportID, String name, boolean family, int age, String profession, String property, String address, String phone, String contactPerson) {
         this.passportID = passportID;
         this.name = name;
         this.family = family;
@@ -27,7 +24,6 @@ public class CustomerForm {
         this.address = address;
         this.phone = phone;
         this.contactPerson = contactPerson;
-        this.loanHistory = loanHistory;
     }
 
     public String getPassportID() {
@@ -102,14 +98,6 @@ public class CustomerForm {
         this.contactPerson = contactPerson;
     }
 
-    public LoanHistory getLoanHistory() {
-        return loanHistory;
-    }
-
-    public void setLoanHistory(LoanHistory loanHistory) {
-        this.loanHistory = loanHistory;
-    }
-
     @Override
     public String toString() {
         return "CustomerForm{" +
@@ -117,12 +105,11 @@ public class CustomerForm {
                 ", name='" + name + '\'' +
                 ", family=" + family +
                 ", age=" + age +
-                ", profession=" + profession +
-                ", property=" + property +
+                ", profession='" + profession + '\'' +
+                ", property='" + property + '\'' +
                 ", address='" + address + '\'' +
                 ", phone='" + phone + '\'' +
                 ", contactPerson='" + contactPerson + '\'' +
-                ", loanHistory=" + loanHistory +
                 '}';
     }
 }

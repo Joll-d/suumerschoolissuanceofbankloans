@@ -231,7 +231,6 @@
         <th> Address</th>
         <th> Phone</th>
         <th> contactPerson</th>
-        <th> LoanHistory</th>
         <th> createdAt</th>
         <th> updatedAt</th>
         <th></th>
@@ -251,7 +250,6 @@
         <td>${customer.address}</td>
         <td>${customer.phone}</td>
         <td>${customer.contactPerson}</td>
-        <td><button type="button" class="btn btn-info">Info</button></td>
         <td>${customer.createdAt}</td>
         <td>${customer.updatedAt}</td>
         <td>

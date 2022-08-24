@@ -19,14 +19,13 @@ public class Customer {
     private String address;
     private String phone;
     private String contactPerson;
-    private LoanHistory loanHistory;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
     public Customer() {
     }
 
-    public Customer(String passportID, String name, boolean family, int age, Profession profession, Property property, String address, String phone, String contactPerson, LoanHistory loanHistory) {
+    public Customer(String passportID, String name, boolean family, int age, Profession profession, Property property, String address, String phone, String contactPerson) {
         this.passportID = passportID;
         this.name = name;
         this.family = family;
@@ -36,10 +35,9 @@ public class Customer {
         this.address = address;
         this.phone = phone;
         this.contactPerson = contactPerson;
-        this.loanHistory = loanHistory;
     }
 
-    public Customer(String id, String passportID, String name, boolean family, int age, Profession profession, Property property, String address, String phone, String contactPerson, LoanHistory loanHistory, LocalDateTime createdAt, LocalDateTime updatedAt) {
+    public Customer(String id, String passportID, String name, boolean family, int age, Profession profession, Property property, String address, String phone, String contactPerson, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.id = id;
         this.passportID = passportID;
         this.name = name;
@@ -50,7 +48,6 @@ public class Customer {
         this.address = address;
         this.phone = phone;
         this.contactPerson = contactPerson;
-        this.loanHistory = loanHistory;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }
@@ -135,13 +132,6 @@ public class Customer {
         this.contactPerson = contactPerson;
     }
 
-    public LoanHistory getLoanHistory() {
-        return loanHistory;
-    }
-
-    public void setLoanHistory(LoanHistory loanHistory) {
-        this.loanHistory = loanHistory;
-    }
 
     public LocalDateTime getCreatedAt() {
         return createdAt;
@@ -185,7 +175,6 @@ public class Customer {
                 ", address='" + address + '\'' +
                 ", phone='" + phone + '\'' +
                 ", contactPerson='" + contactPerson + '\'' +
-                ", loanHistory=" + loanHistory +
                 ", createdAt=" + createdAt +
                 ", updatedAt=" + updatedAt +
                 '}';

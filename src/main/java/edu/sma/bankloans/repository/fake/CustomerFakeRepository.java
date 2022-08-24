@@ -1,7 +1,6 @@
 package edu.sma.bankloans.repository.fake;
 
 import edu.sma.bankloans.model.Customer;
-import edu.sma.bankloans.model.LoanHistory;
 import edu.sma.bankloans.model.Profession;
 import edu.sma.bankloans.model.Property;
 import org.springframework.stereotype.Repository;
@@ -19,10 +18,10 @@ public class CustomerFakeRepository {
     private Customer customer;
     private List<Customer> customers = new ArrayList<>(
             Arrays.asList(
-                    new Customer("1", "00000", "Customer1",true, 20, new Profession(), new Property(), "---", "+ ---", "--- ---", new LoanHistory(), now, now),
-                    new Customer("2", "00000", "Customer2",true, 20, new Profession(), new Property(), "---", "+ ---", "--- ---", new LoanHistory(), now, now),
-                    new Customer("3", "00000", "Customer3",true, 18, new Profession(), new Property(), "---", "+ ---", "--- ---", new LoanHistory(), now, now),
-                    new Customer("4", "00000", "Customer4",true, 30, new Profession(), new Property(), "---", "+ ---", "--- ---", new LoanHistory(), now, now)
+                    new Customer("1", "00000", "Customer1",true, 20, new Profession(), new Property(), "---", "+ ---", "--- ---", now, now),
+                    new Customer("2", "00000", "Customer2",true, 20, new Profession(), new Property(), "---", "+ ---", "--- ---", now, now),
+                    new Customer("3", "00000", "Customer3",true, 18, new Profession(), new Property(), "---", "+ ---", "--- ---", now, now),
+                    new Customer("4", "00000", "Customer4",true, 30, new Profession(), new Property(), "---", "+ ---", "--- ---", now, now)
             ));
 
     public List<Customer> findAll() {

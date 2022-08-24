@@ -20,10 +20,7 @@ public class LoanServiceImpl implements ILoanService {
             Arrays.asList(
                     new Loan("1", "Loan1",
                             new LoanType("1", "LoanType1", new ConditionsReceipt("1", "Conditions1", 18, 60, 10000, 4, now, now), 1000, 10000, 15, 12, now, now),
-                            new Customer("1", "00000", "Customer1", true, 20, new Profession("1", "Engineer",2,3000,now,now), new Property(), "---", "+ ---", "--- ---", new LoanHistory(), now, now), 10000, new Payment(), now, now, now, now),
-                    new Loan("2", "Loan2", new LoanType(), new Customer(), 5000, new Payment(), now, now, now, now),
-                    new Loan("3", "Loan3", new LoanType(), new Customer(), 100000, new Payment(), now, now, now, now),
-                    new Loan("4", "Loan4", new LoanType(), new Customer(), 1000, new Payment(), now, now, now, now)
+                            new Customer("1", "00000", "Customer1", true, 20, new Profession("1", "Engineer",2,3000,now,now), new Property(), "---", "+ ---", "--- ---", now, now), 10000, new Payment(), now, now, now, now)
             ));
     @Autowired
     LoanMongoRepository repository;

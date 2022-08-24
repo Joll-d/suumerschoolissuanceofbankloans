@@ -2,10 +2,7 @@ package edu.sma.bankloans.controller.ui;
 
 import edu.sma.bankloans.form.CustomerForm;
 import edu.sma.bankloans.model.Customer;
-import edu.sma.bankloans.model.Loan;
-import edu.sma.bankloans.model.LoanHistory;
 import edu.sma.bankloans.service.impls.CustomerServiceImpl;
-import edu.sma.bankloans.service.impls.LoanHistoryServiceImpl;
 import edu.sma.bankloans.service.impls.ProfessionServiceImpl;
 import edu.sma.bankloans.service.impls.PropertyServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +22,6 @@ public class CustomerUIController {
     ProfessionServiceImpl serviceProfession;
     @Autowired
     PropertyServiceImpl serviceProperty;
-    @Autowired
-    LoanHistoryServiceImpl serviceHistory;
 
     @GetMapping("")
     public String showAll(Model model) {
@@ -61,7 +56,6 @@ public class CustomerUIController {
         customer.setAddress(form.getAddress());
         customer.setPhone(form.getPhone());
         customer.setContactPerson(form.getContactPerson());
-        customer.setLoanHistory(serviceHistory.create(new LoanHistory("1","none",new Loan(),LocalDateTime.now(),LocalDateTime.now())));
         customer.setCreatedAt(LocalDateTime.now());
         customer.setUpdatedAt(LocalDateTime.now());
         service.create(customer);
@@ -81,7 +75,6 @@ public class CustomerUIController {
         customerToUpdate.setAddress(form.getAddress());
         customerToUpdate.setPhone(form.getPhone());
         customerToUpdate.setContactPerson(form.getContactPerson());
-        customerToUpdate.setLoanHistory(serviceHistory.create(new LoanHistory("1","none",new Loan(),LocalDateTime.now(),LocalDateTime.now())));
         customerToUpdate.setCreatedAt(service.get(id).getCreatedAt());
         customerToUpdate.setUpdatedAt(LocalDateTime.now());
         service.update(customerToUpdate);
