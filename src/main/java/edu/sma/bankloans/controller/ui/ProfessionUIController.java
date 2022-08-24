@@ -49,4 +49,18 @@ public class ProfessionUIController {
         return "redirect:/ui/v1/customer/professions/";
 
     }
+
+    @PostMapping("/edit/{id}")
+    public String updateProfession(@ModelAttribute("form") ProfessionForm form, @PathVariable("id") String id){
+        Profession profession = new Profession();
+        profession.setId(id);
+        profession.setName(form.getName());
+        profession.setWorkExperience(form.getWorkExperience());
+        profession.setSalary(form.getSalary());
+        profession.setCreatedAt(service.get(id).getCreatedAt());
+        profession.setUpdatedAt(LocalDateTime.now());
+        service.update(profession);
+        return "redirect:/ui/v1/customer/professions/";
+
+    }
 }

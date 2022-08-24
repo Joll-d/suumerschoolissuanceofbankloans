@@ -230,7 +230,7 @@
             <td>${profession.createdAt}</td>
             <td>${profession.updatedAt}</td>
             <td>
-                <button type="button" class="btn btn-success">Update</button>
+                <button type="button" class="btn btn-success" onclick="getID(${profession.id})">Update</button>
             </td>
             <td>
                 <a href="http://localhost:8080/ui/v1/customer/professions/del/${profession.id}">
@@ -280,5 +280,41 @@
         </form>
     </div>
 </div>
+
+<#--Update menu-->
+<div class="hover_bkgr_fricc" id="update">
+    <span class="helper"></span>
+    <div>
+        <div class="popupCloseButton">&times;</div>
+        <h1>Update</h1>
+        <form action="/ui/v1/customer/professions/edit/{ID}" method="post" id="updateForm">
+            <fieldset>
+                <table>
+                    <th></th>
+                    <th></th>
+                    <tr>
+                        <td><label for="name">Name:</label></td>
+                        <td><input type="text" name="name"><br></td>
+                    </tr>
+                    <tr>
+                        <td><label for="name">Work experience:</label></td>
+                        <td><input type="text" name="workExperience"><br></td>
+                    </tr>
+                    <tr>
+                        <td><label for="name">Salary:</label></td>
+                        <td><input type="text" name="salary"><br></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <button type="submit" class="btn btn-success">Update</button>
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+        </form>
+    </div>
+</div>
+
 </body>
 </html>
