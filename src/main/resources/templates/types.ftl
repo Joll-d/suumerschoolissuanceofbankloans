@@ -235,7 +235,7 @@
         <td>${type.createdAt}</td>
         <td>${type.updatedAt}</td>
         <td>
-            <button type="button" class="btn btn-success">Update</button>
+            <button type="button" class="btn btn-success" onclick="getID(${type.id})">Update</button>
         </td>
         <td>
             <a href="http://localhost:8080/ui/v1/loans/types/del/${type.id}">
@@ -306,7 +306,64 @@
     </div>
 </div>
 
-
+<#--Update menu-->
+<div class="hover_bkgr_fricc" id="update">
+    <span class="helper"></span>
+    <div>
+        <div class="popupCloseButton">&times;</div>
+        <h1>Update</h1>
+        <form action="/ui/v1/loans/types/edit/{ID}" method="post" id="updateForm">
+            <fieldset>
+                <table>
+                    <th></th>
+                    <th></th>
+                    <tr>
+                        <td><label for="name">Name:</label></td>
+                        <td><input type="text" name="name"><br></td>
+                    </tr>
+                    <tr>
+                        <td><label for="type">Conditions:</label></td>
+                        <td align="left"><select name="conditions" class="select-css">
+                                <#list conditions as condition>
+                                    <option value=${condition.id}> ${condition.id} ${condition.name} ${condition.salaryMin} ${condition.workExperience}</option>
+                                </#list>
+                            </select></td>
+                    </tr>
+                    <tr>
+                        <td><br></td>
+                        <td><br></td>
+                    </tr>
+                    <tr>
+                        <td><label for="name">Amount min:</label></td>
+                        <td><input type="text" name="amountMin"><br></td>
+                    </tr>
+                    <tr>
+                        <td><label for="name">Amount max:</label></td>
+                        <td><input type="text" name="amountMax"><br></td>
+                    </tr>
+                    <tr>
+                        <td><br></td>
+                        <td><br></td>
+                    </tr>
+                    <tr>
+                        <td><label for="sum">Rate:</label></td>
+                        <td><input type="text" name="rate"><br></td>
+                    </tr>
+                    <tr>
+                        <td><label for="sum">Term:</label></td>
+                        <td><input type="text" name="term"><br></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <button type="submit" class="btn btn-success">Update</button>
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+        </form>
+    </div>
+</div>
 
 </body>
 </html>

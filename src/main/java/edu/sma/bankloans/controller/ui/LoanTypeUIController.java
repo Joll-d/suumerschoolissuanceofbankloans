@@ -57,5 +57,22 @@ public class LoanTypeUIController {
         return "redirect:/ui/v1/loans/types/";
 
     }
+
+    @PostMapping("/edit/{id}")
+    public String updateLoanType(@ModelAttribute("form") LoanTypeForm form, @PathVariable("id") String id){
+        LoanType loanType = new LoanType();
+        loanType.setId(id);
+        loanType.setName(form.getName());
+        loanType.setConditions(serviceConditions.get(form.getConditions()));
+        loanType.setAmountMin(form.getAmountMin());
+        loanType.setAmountMax(form.getAmountMax());
+        loanType.setRate(form.getRate());
+        loanType.setTerm(form.getTerm());
+        loanType.setCreatedAt(service.get(id).getCreatedAt());
+        loanType.setUpdatedAt(LocalDateTime.now());
+        service.update(loanType);
+        return "redirect:/ui/v1/loans/types/";
+
+    }
 }
 
