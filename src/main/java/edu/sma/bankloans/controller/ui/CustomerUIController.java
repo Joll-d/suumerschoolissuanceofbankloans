@@ -50,7 +50,7 @@ public class CustomerUIController {
         return "redirect:/ui/v1/customers/";
     }
 
-    @PostMapping("/add")
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
     public String addLoan(@ModelAttribute("form") CustomerForm form){
         Customer customer = new Customer();
         customer.setPassportID(form.getPassportID());
@@ -69,7 +69,7 @@ public class CustomerUIController {
 
     }
 
-    @PostMapping("/edit/{id}")
+    @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
     public String updateCustomer(@ModelAttribute("form") CustomerForm form, @PathVariable("id") String id){
         Customer customerToUpdate = new Customer();
         customerToUpdate.setId(id);

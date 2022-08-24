@@ -47,7 +47,6 @@
         <td>${property.createdAt}</td>
         <td>${property.updatedAt}</td>
         <td>
-            <button type="button" class="btn btn-success">Update</button>
         </td>
     </tr>
 </table>

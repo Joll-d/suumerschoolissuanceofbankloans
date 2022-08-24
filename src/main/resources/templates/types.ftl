@@ -235,7 +235,7 @@
         <td>${type.createdAt}</td>
         <td>${type.updatedAt}</td>
         <td>
-            <button type="button" class="btn btn-success" onclick="getID(${type.id})">Update</button>
+            <button type="button" class="btn btn-success" onclick="getID('${type.id}')">Update</button>
         </td>
         <td>
             <a href="http://localhost:8080/ui/v1/loans/types/del/${type.id}">

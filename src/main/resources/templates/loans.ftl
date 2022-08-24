@@ -234,8 +234,8 @@
             <td><a href="http://localhost:8080/ui/v1/loans/types/${loan.type.id}"
                    class="link1">${loan.type.name}</a>
             </td>
-            <td><a href=""
-                   class="link1">${loan.customer.name}</a></td>
+            <td><a href="http://localhost:8080/ui/v1/customers/${loan.customer.id}"
+                   class="link1">${loan.customer.id}</a></td>
             <td>${loan.sum}</td>
             <td>${loan.payment}</td>
             <td>${loan.dateIssuance}</td>
@@ -243,7 +243,7 @@
             <td>${loan.createdAt}</td>
             <td>${loan.updatedAt}</td>
             <td>
-                <a class="trigger_popup_fricc" onclick="getID(${loan.id})">
+                <a class="trigger_popup_fricc" onclick="getID('${loan.id}')">
                     <button type="button" class="btn btn-success">Update</button>
                 </a>
             </td>

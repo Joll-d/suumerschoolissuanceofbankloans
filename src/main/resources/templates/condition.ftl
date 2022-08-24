@@ -51,7 +51,6 @@
         <td>${condition.createdAt}</td>
         <td>${condition.updatedAt}</td>
         <th>
-            <button type="button" class="btn btn-success">Update</button>
         </th>
     </tr>
 </table>

@@ -234,21 +234,21 @@
         <td>${customer.name}</td>
         <td>${customer.family?string('Yes', 'No')}</td>
         <td>${customer.age}</td>
-        <td>${customer.profession}</td>
-        <td>${customer.property}</td>
+        <td><#if customer.profession.name??> ${customer.profession.name} <#else> none </#if></td>
+        <td>${customer.property.cost}</td>
         <td>${customer.address}</td>
         <td>${customer.phone}</td>
         <td>${customer.contactPerson}</td>
-        <td>${customer.loanHistory}</td>
+        <td><button type="button" class="btn btn-info">Info</button></td>
         <td>${customer.createdAt}</td>
         <td>${customer.updatedAt}</td>
         <td>
-            <a onclick="getID(${customer.id})">
+            <a onclick="getID('${customer.id}')">
                 <button type="button" class="btn btn-success">Update</button>
             </a>
         </td>
         <td>
-            <a href="http://localhost:8080/ui/v1/customer/del/${customer.id}">
+            <a href="http://localhost:8080/ui/v1/customers/del/${customer.id}">
                 <button type="button" class="btn btn-danger">Delete</button>
             </a>
         </td>

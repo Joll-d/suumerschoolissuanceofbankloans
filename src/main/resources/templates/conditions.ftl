@@ -233,7 +233,7 @@
         <td>${condition.createdAt}</td>
         <td>${condition.updatedAt}</td>
         <td>
-            <button type="button" class="btn btn-success" onclick="getID(${condition.id})">Update</button>
+            <button type="button" class="btn btn-success" onclick="getID('${condition.id}')">Update</button>
         </td>
         <td>
             <a href="http://localhost:8080/ui/v1/loans/types/conditions/del/${condition.id}">

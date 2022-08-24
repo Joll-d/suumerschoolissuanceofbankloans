@@ -47,7 +47,6 @@
     <td>${profession.createdAt}</td>
     <td>${profession.updatedAt}</td>
     <td>
-      <button type="button" class="btn btn-success">Update</button>
     </td>
   </tr>
 </table>
