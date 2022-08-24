@@ -37,7 +37,9 @@
         <th> Work experience</th>
         <th> createdAt</th>
         <th> updatedAt</th>
-        <td><button type="button" class="btn btn-primary">Back</button></td>
+        <td><a href="#" onclick="history.go(-1);return false;">
+                <button type="button" class="btn btn-primary">Back</button>
+        </a></td>
     </tr>
     <tr>
         <td>${condition.id}</td>

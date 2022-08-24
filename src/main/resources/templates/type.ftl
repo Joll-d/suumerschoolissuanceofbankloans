@@ -38,7 +38,9 @@
         <th> Term</th>
         <th> createdAt</th>
         <th> updatedAt</th>
-        <th><button type="button" class="btn btn-primary">Back</button></th>
+        <th><a href="#" onclick="history.go(-1);return false;">
+                <button type="button" class="btn btn-primary">Back</button>
+        </a></th>
     </tr>
     <tr>
         <td>${type.id}</td>

@@ -193,7 +193,7 @@
 
         function getID(ID) {
             $("#update").show();
-            $("#updateForm").attr("action", $("#updateForm").attr("action").replace("{ID}", ID));
+            $("#updateForm").attr("action", ('/ui/v1/customers/edit/' + ID));
 
         }
 
@@ -243,7 +243,9 @@
         <td>${customer.createdAt}</td>
         <td>${customer.updatedAt}</td>
         <td>
-            <button type="button" class="btn btn-success" onclick="getID(${customer.id})">Update</button>
+            <a onclick="getID(${customer.id})">
+                <button type="button" class="btn btn-success">Update</button>
+            </a>
         </td>
         <td>
             <a href="http://localhost:8080/ui/v1/customer/del/${customer.id}">
@@ -253,8 +255,6 @@
     </tr>
     </#list>
 </table>
-
-
 
 
 <#--Create menu-->
@@ -333,15 +333,13 @@
 </div>
 
 
-
-
 <#--Update menu-->
 <div class="hover_bkgr_fricc" id="update">
     <span class="helper"></span>
     <div>
         <div class="popupCloseButton">&times;</div>
         <h1>Update</h1>
-        <form action="/ui/v1/customers/edit/{ID}" method="post" id="updateForm">
+        <form action="/ui/v1/customers/edit/" method="post" id="updateForm">
             <fieldset>
                 <table>
                     <th></th>
