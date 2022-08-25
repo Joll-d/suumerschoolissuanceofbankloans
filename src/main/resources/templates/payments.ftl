@@ -222,7 +222,7 @@
                 <button type="button" class="btn btn-primary">Back</button>
             </a></th>
         <th>
-            <a class="trigger_popup_fricc" id="createA" onclick="getID(${ID})">
+            <a class="trigger_popup_fricc" id="createA" onclick="getID('${ID}')">
                 <button type="button" class="btn btn-success">Create</button>
             </a>
         </th>

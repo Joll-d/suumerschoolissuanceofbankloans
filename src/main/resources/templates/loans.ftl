@@ -300,7 +300,7 @@
                         <td><label for="sum">Sum:</label></td>
                         <td><input type="text" name="sum"><br></td>
                     </tr>
-                    <tr>
+                    <tr style="display: none">
                         <td><label for="payment">Payment:</label></td>
                         <td align="left"><select name="payment" class="select-css">
                                 <#list payments as payment>
@@ -364,7 +364,7 @@
                         <td><label for="sum">Sum:</label></td>
                         <td><input type="text" id="sum" name="sum" value=""><br></td>
                     </tr>
-                    <tr>
+                    <tr style="display: none">
                         <td><label for="payment">Payment:</label></td>
                         <td><select name="payment" id="payment" class="select-css">
                                 <#list payments as payment>

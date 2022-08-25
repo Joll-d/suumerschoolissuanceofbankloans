@@ -52,7 +52,7 @@ public class LoanUIController {
         loan.setType(serviceType.get(form.getType()));
         loan.setCustomer(serviceCustomer.get(form.getCustomer()));
         loan.setSum(form.getSum());
-        loan.setPayment(servicePayment.get(form.getPayment()));
+        loan.setPayment(servicePayment.get("1"));
         loan.setDateIssuance(LocalDateTime.now());
         loan.setDateRefund(LocalDateTime.now());
         loan.setCreatedAt(LocalDateTime.now());
