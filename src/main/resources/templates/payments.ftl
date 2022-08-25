@@ -7,6 +7,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <style>
+        .checkmark {
+            height: 35px;
+            width: 35px;
+            background-color: #eee;
+        }
         input {
             display: block;
             font-size: 16px;
@@ -178,9 +183,6 @@
     <script>
 
         $(window).load(function () {
-            $("#createA").click(function () {
-                $('#create').show();
-            });
             $('.popupCloseButton').click(function () {
                 $('.hover_bkgr_fricc').hide();
             });
@@ -192,11 +194,9 @@
             });
         });
 
-        function getID(ID, name, sum) {
-            $("#update").show();
-            $("#updateForm").attr("action", $("#updateForm").attr("action").replace("{ID}", ID));
-            $("#name").attr("value", name);
-            $("#sum").attr("value", sum);
+        function getID(ID) {
+            $('#create').show();
+            $("#createForm").attr("action", $("#createForm").attr("action").replace("{ID}", ID));
         }
 
     </script>
@@ -204,7 +204,7 @@
 <body style="color:#fff; background-color:#212529">
 
 <h1>Hello, loans!</h1>
-<button type="button" class="btn btn-fake">loans</button>
+<button type="button" class="btn btn-dark"><a href="/ui/v1/loans/">loans</a></button>
 <button type="button" class="btn btn-dark"><a href="/ui/v1/customers/">customers</a></button>
 <button type="button" class="btn btn-dark"><a href="/ui/v1/loans/types/">types</a></button>
 <button type="button" class="btn btn-dark"><a href="/ui/v1/loans/types/conditions/">conditions</a></button>
@@ -213,45 +213,33 @@
     <tr>
         <th> ID</th>
         <th> Name</th>
-        <th> Type</th>
-        <th> Customer</th>
-        <th> Sum</th>
-        <th> Payment</th>
-        <th> Issuance</th>
-        <th> Refund</th>
+        <th> Paid</th>
+        <th> Delay</th>
+        <th> Payment date</th>
         <th> createdAt</th>
         <th> updatedAt</th>
-        <th></th>
+        <th><a href="#" onclick="history.go(-1);return false;">
+                <button type="button" class="btn btn-primary">Back</button>
+            </a></th>
         <th>
-            <a class="trigger_popup_fricc" id="createA">
+            <a class="trigger_popup_fricc" id="createA" onclick="getID(${ID})">
                 <button type="button" class="btn btn-success">Create</button>
             </a>
         </th>
     </tr>
-    <#list loans as loan>
+    <#list payments as payment>
         <tr>
-            <td>${loan.id}</td>
-            <td>${loan.name}</td>
-            <td><a href="http://localhost:8080/ui/v1/loans/types/${loan.type.id}"
-                   class="link1">${loan.type.name}</a>
-            </td>
-            <td><a href="http://localhost:8080/ui/v1/customers/${loan.customer.id}"
-                   class="link1">${loan.customer.name}</a></td>
-            <td>${loan.sum}</td>
-            <td><a href="http://localhost:8080/ui/v1/loans/payments/${loan.id}"><button type="button" class="btn btn-primary">Info</button></a></td>
-            <td>${loan.dateIssuance}</td>
-            <td style="width: 100px"></td>
-            <td>${loan.createdAt}</td>
-            <td>${loan.updatedAt}</td>
+            <td>${payment.id}</td>
+            <td>${payment.name}</td>
+            <td>${payment.paid}</td>
+            <td>${payment.delay?string("yes", "no")}</td>
+            <td>${payment.paymentDate}</td>
+
+            <td>${payment.createdAt}</td>
+            <td>${payment.updatedAt}</td>
             <td>
-                <a class="trigger_popup_fricc" onclick="getID('${loan.id}','${loan.name}','${loan.sum}')">
-                    <button type="button" class="btn btn-success">Update</button>
-                </a>
             </td>
             <td>
-                <a href="http://localhost:8080/ui/v1/loans/del/${loan.id}">
-                    <button type="button" class="btn btn-danger">Delete</button>
-                </a>
             </td>
         </tr>
     </#list>
@@ -263,7 +251,7 @@
     <div>
         <div class="popupCloseButton">&times;</div>
         <h1>Create</h1>
-        <form action="/ui/v1/loans/add" method="post">
+        <form action="/ui/v1/loans/payments/add/{ID}" method="post" id="createForm">
             <fieldset>
                 <table>
                     <th></th>
@@ -273,40 +261,16 @@
                         <td><input type="text" name="name"><br></td>
                     </tr>
                     <tr>
-                        <td><label for="type">Type:</label></td>
-                        <td align="left"><select name="type" class="select-css">
-                                <#list types as type>
-                                    <option value=${type.id}> ${type.id} ${type.name} ${type.conditions.name}</option>
-                                </#list>
-                            </select></td>
+                        <td><label for="name">Paid:</label></td>
+                        <td><input type="text" name="paid"><br></td>
+                    </tr>
+                    <tr>
+                        <td><label for="name">Delay:</label></td>
+                        <td><input type="checkbox" name="delay" class="checkmark"><br></td>
                     </tr>
                     <tr>
                         <td><br></td>
                         <td><br></td>
-                    </tr>
-                    <tr>
-                        <td><label for="customer">Customer:</label></td>
-                        <td align="left"><select name="customer" class="select-css">
-                                <#list customers as customer>
-                                    <option value=${customer.id}> ${customer.id} ${customer.name} ${customer.age}</option>
-                                </#list>
-                            </select></td>
-                    </tr>
-                    <tr>
-                        <td><br></td>
-                        <td><br></td>
-                    </tr>
-                    <tr>
-                        <td><label for="sum">Sum:</label></td>
-                        <td><input type="text" name="sum"><br></td>
-                    </tr>
-                    <tr>
-                        <td><label for="payment">Payment:</label></td>
-                        <td align="left"><select name="payment" class="select-css">
-                                <#list payments as payment>
-                                    <option value=${payment.id}> ${payment.id} ${payment.name} ${payment.paid}</option>
-                                </#list>
-                            </select></td>
                     </tr>
                     <tr>
                         <td></td>
@@ -319,71 +283,6 @@
         </form>
     </div>
 </div>
-
-
-<#--Update menu-->
-<div class="hover_bkgr_fricc" id="update">
-    <span class="helper"></span>
-    <div>
-        <div class="popupCloseButton">&times;</div>
-        <h1>Update</h1>
-        <form action="/ui/v1/loans/edit/{ID}" method="post" id="updateForm">
-            <fieldset>
-                <table>
-                    <th></th>
-                    <th></th>
-                    <tr>
-                        <td><label for="name">Name:</label></td>
-                        <td><input type="text" id="name" name="name" value=""><br></td>
-                    </tr>
-                    <tr>
-                        <td><label for="type">Type:</label></td>
-                        <td><select name="type" id="type" class="select-css">
-                                <#list types as type>
-                                    <option value=${type.id}> ${type.id} ${type.name} ${type.conditions.name}</option>
-                                </#list>
-                            </select></td>
-                    </tr>
-                    <tr>
-                        <td><br></td>
-                        <td><br></td>
-                    </tr>
-                    <tr>
-                        <td><label for="customer">Customer:</label></td>
-                        <td><select name="customer" id="customer" class="select-css">
-                                <#list customers as customer>
-                                    <option value=${customer.id}> ${customer.id} ${customer.name} ${customer.age}</option>
-                                </#list>
-                            </select></td>
-                    </tr>
-                    <tr>
-                        <td><br></td>
-                        <td><br></td>
-                    </tr>
-                    <tr>
-                        <td><label for="sum">Sum:</label></td>
-                        <td><input type="text" id="sum" name="sum" value=""><br></td>
-                    </tr>
-                    <tr>
-                        <td><label for="payment">Payment:</label></td>
-                        <td><select name="payment" id="payment" class="select-css">
-                                <#list payments as payment>
-                                    <option value=${payment.id}> ${payment.id} ${payment.name} ${payment.paid}</option>
-                                </#list>
-                            </select></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>
-                            <button type="submit" class="btn btn-success">Update</button>
-                        </td>
-                    </tr>
-                </table>
-            </fieldset>
-        </form>
-    </div>
-</div>
-
 
 </body>
 </html>

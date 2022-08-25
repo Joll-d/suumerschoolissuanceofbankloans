@@ -1,14 +1,9 @@
-package edu.sma.bankloans.model;
-
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+package edu.sma.bankloans.form;
 
 import java.time.LocalDateTime;
-import java.util.Objects;
 
-@Document
-public class Payment {
-    @Id
+
+public class PaymentForm {
     private String id;
 
     private String loanId;
@@ -20,10 +15,10 @@ public class Payment {
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
-    public Payment() {
+    public PaymentForm() {
     }
 
-    public Payment(String loanId, String name, double paid, boolean delay, LocalDateTime paymentDate) {
+    public PaymentForm(String loanId, String name, double paid, boolean delay, LocalDateTime paymentDate) {
         this.loanId = loanId;
         this.name = name;
         this.paid = paid;
@@ -31,7 +26,7 @@ public class Payment {
         this.paymentDate = paymentDate;
     }
 
-    public Payment(String id, String loanId, String name, double paid, boolean delay, LocalDateTime paymentDate, LocalDateTime createdAt, LocalDateTime updatedAt) {
+    public PaymentForm(String id, String loanId, String name, double paid, boolean delay, LocalDateTime paymentDate, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.id = id;
         this.loanId = loanId;
         this.name = name;
@@ -74,7 +69,7 @@ public class Payment {
         this.paid = paid;
     }
 
-    public boolean isDelay() {
+    public boolean getDelay() {
         return delay;
     }
 
@@ -106,18 +101,6 @@ public class Payment {
         this.updatedAt = updatedAt;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Payment payment = (Payment) o;
-        return id.equals(payment.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
 
     @Override
     public String toString() {

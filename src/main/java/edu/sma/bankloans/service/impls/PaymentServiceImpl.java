@@ -18,7 +18,7 @@ public class PaymentServiceImpl implements IPaymentService {
     private Payment loan;
     private List<Payment> payments = new ArrayList<>(
             Arrays.asList(
-                    new Payment("1","1",1000,now,now,now,now)
+                    new Payment("1","1","asd0",1,true,now,now,now)
             ));
     @Autowired
     PaymentMongoRepository repository;
@@ -51,6 +51,10 @@ public class PaymentServiceImpl implements IPaymentService {
     @Override
     public List<Payment> getAll() {
         return repository.findAll();
+    }
+
+    public List<Payment> getAllById(String id) {
+        return repository.findByLoanId(id);
     }
 }
 
