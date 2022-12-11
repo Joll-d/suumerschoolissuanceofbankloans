@@ -181,6 +181,9 @@
             $("#createA").click(function () {
                 $('#create').show();
             });
+            $("#createA").click(function () {
+                $('#emptyError').show();
+            });
             $('.popupCloseButton').click(function () {
                 $('.hover_bkgr_fricc').hide();
             });
@@ -203,12 +206,7 @@
 </head>
 <body style="color:#fff; background-color:#212529">
 
-<h1>Hello, loans!</h1>
 <button type="button" class="btn btn-fake">loans</button>
-<button type="button" class="btn btn-dark"><a href="/ui/v1/customers/">customers</a></button>
-<button type="button" class="btn btn-dark"><a href="/ui/v1/loans/types/">types</a></button>
-<button type="button" class="btn btn-dark"><a href="/ui/v1/loans/types/conditions/">conditions</a></button>
-<button type="button" class="btn btn-dark"><a href="/ui/v1/customer/professions/">professions</a></button>
 <table class="table table-dark table-striped">
     <tr>
         <th> ID</th>
@@ -216,7 +214,6 @@
         <th> Type</th>
         <th> Customer</th>
         <th> Sum</th>
-        <th> Payment</th>
         <th> Issuance</th>
         <th> Refund</th>
         <th> createdAt</th>
@@ -232,13 +229,9 @@
         <tr>
             <td>${loan.id}</td>
             <td>${loan.name}</td>
-            <td><a href="http://localhost:8080/ui/v1/loans/types/${loan.type.id}"
-                   class="link1">${loan.type.name}</a>
-            </td>
-            <td><a href="http://localhost:8080/ui/v1/customers/${loan.customer.id}"
-                   class="link1">${loan.customer.name}</a></td>
+            <td>${loan.type.name}</td>
+            <td>${loan.customer.name}</td>
             <td>${loan.sum}</td>
-            <td><a href="http://localhost:8080/ui/v1/loans/payments/${loan.id}"><button type="button" class="btn btn-primary">Info</button></a></td>
             <td>${loan.dateIssuance}</td>
             <td style="width: 100px"></td>
             <td>${loan.createdAt}</td>
@@ -270,7 +263,7 @@
                     <th></th>
                     <tr>
                         <td><label for="name">Name:</label></td>
-                        <td><input type="text" name="name"><br></td>
+                        <td><input type="text" name="name" value="123"><br></td>
                     </tr>
                     <tr>
                         <td><label for="type">Type:</label></td>
@@ -384,6 +377,15 @@
     </div>
 </div>
 
+<#--Error-->
+<div class="hover_bkgr_fricc" id="emptyError">
+    <span class="helper"></span>
+    <div>
+        <div class="popupCloseButton">&times;</div>
+        <h1>Error</h1>
+        <div>Invalid data type.</div>
+    </div>
+</div>
 
 </body>
 </html>

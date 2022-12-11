@@ -3,18 +3,112 @@
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" type="text/css" href="text.css">
-  <title>Smaliuha - SummerSchool</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <title>Smaliuha</title>
+  <style>
+    /* Popup box BEGIN */
+    .hover_bkgr_fricc {
+      background: rgba(0, 0, 0, .4);
+      display: none;
+      height: 100%;
+      position: fixed;
+      text-align: center;
+      top: 0;
+      width: 100%;
+      z-index: 10000;
+    }
+
+    .hover_bkgr_fricc .helper {
+      display: inline-block;
+      height: 100%;
+      vertical-align: middle;
+    }
+
+    .hover_bkgr_fricc > div {
+      background-color: #212529;
+      box-shadow: 10px 10px 60px #555;
+      display: inline-block;
+      height: auto;
+      max-width: 551px;
+      min-height: 100px;
+      vertical-align: middle;
+      width: 60%;
+      position: relative;
+      border-radius: 8px;
+      padding: 15px 5%;
+    }
+
+    .popupCloseButton {
+      background-color: #212529;
+      cursor: pointer;
+      display: inline-block;
+      font-family: arial;
+      font-weight: bold;
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      font-size: 25px;
+      line-height: 30px;
+      width: 30px;
+      height: 30px;
+      text-align: center;
+    }
+
+    .popupCloseButton:hover {
+      background-color: #212529;
+    }
+
+    .trigger_popup_fricc {
+      cursor: pointer;
+      display: inline-block;
+      font-weight: bold;
+    }
+
+    /* Popup box BEGIN */
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  <script>
+
+    $(window).load(function () {
+      $('.popupCloseButton').click(function () {
+        $('.hover_bkgr_fricc').hide();
+      });
+    });
+
+    $(window).load(function () {
+      $('.popupCloseButton').click(function () {
+        $('.hover_bkgr_fricc').hide();
+      });
+    });
+
+    function getID(ID) {
+      $('#create').show();
+    }
+
+  </script>
 </head>
 <body style="color:#fff; background-color:#212529">
 <div class="title">
-  <h3>Bratislava University of Economics and Management</h3>
-  <h1>Coursework</h1>
-  <h2 id="underTitle">For Summer School</h2>
-  <h1 id="topic">Topic: Issuance of loans by the bank</h1>
-  <h2 id="student">Student: Andrii Smaliuha</h2>
+  <h3>Simon Kuznets Kharkiv National University of Economics</h3>
+  <h1>КОМПЛЕКСНИЙ КУРСОВИЙ ПРОЕКТ: ПРОГРАМУВАННЯ</h1>
+  <h1 id="topic">Тема: «Розроблення програмної системи для підтримки операцій кредитування в банку»</h1>
   <a href="/ui/v1/loans/">
   <button class="button" style="vertical-align:middle"><span>Start</span></button>
   </a>
 </div>
+<a class="trigger_popup_fricc" id="createA" onclick="getID('${ID}')">
+  <button id="info" type="button" class="btn btn-primary">Info</button>
+</a>
+
+<div class="hover_bkgr_fricc" id="create">
+  <span class="helper"></span>
+  <div>
+    <div class="popupCloseButton">&times;</div>
+    <h1>Info</h1>
+  </div>
+</div>
+
+
 </body>
 </html>

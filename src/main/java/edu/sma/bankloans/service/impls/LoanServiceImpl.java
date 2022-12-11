@@ -18,7 +18,7 @@ public class LoanServiceImpl implements ILoanService {
     private Loan loan;
     private List<Loan> loans = new ArrayList<>(
             Arrays.asList(
-                    new Loan("1", "Loan1",
+                    new Loan("63961ab14d2f1a34d365411b", "Loan1",
                             new LoanType("1", "LoanType1", new ConditionsReceipt("1", "Conditions1", 18, 60, 10000, 4, now, now), 1000, 10000, 15, 12, now, now),
                             new Customer("1", "00000", "Customer1", true, 20, new Profession("1", "Engineer",2,3000,now,now), new Property(), "---", "+ ---", "--- ---", now, now), 10000, new Payment(), now, now, now, now)
             ));
