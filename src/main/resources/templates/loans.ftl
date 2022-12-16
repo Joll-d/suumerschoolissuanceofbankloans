@@ -182,7 +182,7 @@
                 $('#create').show();
             });
             $("#createA").click(function () {
-                $('#emptyError').show();
+                $('#createA').show();
             });
             $('.popupCloseButton').click(function () {
                 $('.hover_bkgr_fricc').hide();
@@ -263,7 +263,7 @@
                     <th></th>
                     <tr>
                         <td><label for="name">Name:</label></td>
-                        <td><input type="text" name="name" value="123"><br></td>
+                        <td><input type="text" name="name" value=""><br></td>
                     </tr>
                     <tr>
                         <td><label for="type">Type:</label></td>
@@ -291,7 +291,7 @@
                     </tr>
                     <tr>
                         <td><label for="sum">Sum:</label></td>
-                        <td><input type="text" name="sum"><br></td>
+                        <td><input type="number" name="sum"><br></td>
                     </tr>
                     <tr style="display: none">
                         <td><label for="payment">Payment:</label></td>
@@ -355,7 +355,7 @@
                     </tr>
                     <tr>
                         <td><label for="sum">Sum:</label></td>
-                        <td><input type="text" id="sum" name="sum" value=""><br></td>
+                        <td><input type="number" id="sum" name="sum" value=""><br></td>
                     </tr>
                     <tr style="display: none">
                         <td><label for="payment">Payment:</label></td>
@@ -386,6 +386,17 @@
         <div>Invalid data type.</div>
     </div>
 </div>
+
+<#--Error-->
+<div class="hover_bkgr_fricc" id="emptyError">
+    <span class="helper"></span>
+    <div>
+        <div class="popupCloseButton">&times;</div>
+        <h1>Error</h1>
+        <div>The field cannot be empty.</div>
+    </div>
+</div>
+
 
 </body>
 </html>
