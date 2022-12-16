@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+//communication between the repository and the database
 @Service
 public class LoanServiceImpl implements ILoanService {
     private LocalDateTime now = LocalDateTime.now();
@@ -25,31 +26,37 @@ public class LoanServiceImpl implements ILoanService {
     @Autowired
     LoanMongoRepository repository;
 
+    //saving the database
     @PostConstruct
     void init() {
         repository.saveAll(loans);
     }
 
+    //saving a new record in the database
     @Override
     public Loan create(Loan provider) {
         return repository.save(provider);
     }
 
+    //updating a record in the database
     @Override
     public Loan update(Loan provider) {
         return repository.save(provider);
     }
 
+    //return of record by id
     @Override
     public Loan get(String id) {
         return repository.findById(id).get();
     }
 
+    //deletion of record by id
     @Override
     public void delete(String id) {
         repository.deleteById(id);
     }
 
+    //return all records
     @Override
     public List<Loan> getAll() {
         return repository.findAll();

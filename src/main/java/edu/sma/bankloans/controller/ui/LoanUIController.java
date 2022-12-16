@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 
+//accepts requests and performs CRUD
 @RequestMapping("/ui/v1/loans/")
 @Controller
 public class LoanUIController {
@@ -26,6 +27,7 @@ public class LoanUIController {
     LoanTypeServiceImpl serviceType;
     @Autowired
     CustomerServiceImpl serviceCustomer;
+    //returns fame
     @GetMapping("")
     public String showOne(Model model) {
         String updateID = "";
@@ -38,43 +40,53 @@ public class LoanUIController {
         model.addAttribute("form", loanForm);
         return "loans";
     }
-
+    //deletes the record
     @GetMapping("/del/{id}")
     public String deleteById(@PathVariable("id") String id) {
         service.delete(id);
         return "redirect:/ui/v1/loans/";
     }
-
+    //adds a record
     @PostMapping("/add")
-    public String addLoan(@ModelAttribute("form") LoanForm form){
+    public String addLoan(@ModelAttribute("form") LoanForm form, Model model){
         Loan loan = new Loan();
-        loan.setName(form.getName());
-        loan.setType(serviceType.get(form.getType()));
-        loan.setCustomer(serviceCustomer.get(form.getCustomer()));
-        loan.setSum(form.getSum());
-        loan.setPayment(servicePayment.get("1"));
-        loan.setDateIssuance(LocalDateTime.now());
-        loan.setDateRefund(LocalDateTime.now());
-        loan.setCreatedAt(LocalDateTime.now());
-        loan.setUpdatedAt(LocalDateTime.now());
+        try {
+            loan.setName(form.getName());
+            loan.setType(serviceType.get(form.getType()));
+            loan.setCustomer(serviceCustomer.get(form.getCustomer()));
+            loan.setSum(form.getSum());
+            loan.setPayment(servicePayment.get("1"));
+        }catch (TypeNotPresentException e){
+            model.addAttribute("ErrorID", 0);
+        }
+            loan.setDateIssuance(LocalDateTime.now());
+            loan.setDateRefund(LocalDateTime.now());
+            loan.setCreatedAt(LocalDateTime.now());
+            loan.setUpdatedAt(LocalDateTime.now());
+
         service.create(loan);
         return "redirect:/ui/v1/loans/";
 
     }
-
+    //updates the record
     @PostMapping("/edit/{id}")
-    public String updateLoan(@ModelAttribute("form") LoanForm form, @PathVariable("id") String id){
+    public String updateLoan(@ModelAttribute("form") LoanForm form, @PathVariable("id") String id, Model model){
         Loan loanToUpdate = new Loan();
-        loanToUpdate.setId(id);
-        loanToUpdate.setName(form.getName());
-        loanToUpdate.setType(serviceType.get(form.getType()));
-        loanToUpdate.setCustomer(serviceCustomer.get(form.getCustomer()));
-        loanToUpdate.setSum(form.getSum());
-        loanToUpdate.setPayment(servicePayment.get(form.getPayment()));
-        loanToUpdate.setDateIssuance(LocalDateTime.now());
-        loanToUpdate.setDateRefund(LocalDateTime.now());
-        loanToUpdate.setCreatedAt(service.get(id).getCreatedAt());
-        loanToUpdate.setUpdatedAt(LocalDateTime.now());
+        try {
+            loanToUpdate.setId(id);
+            loanToUpdate.setName(form.getName());
+            loanToUpdate.setType(serviceType.get(form.getType()));
+            loanToUpdate.setCustomer(serviceCustomer.get(form.getCustomer()));
+            loanToUpdate.setSum(form.getSum());
+            loanToUpdate.setPayment(servicePayment.get(form.getPayment()));
+            loanToUpdate.setDateIssuance(LocalDateTime.now());
+            loanToUpdate.setDateRefund(LocalDateTime.now());
+            loanToUpdate.setCreatedAt(service.get(id).getCreatedAt());
+            loanToUpdate.setUpdatedAt(LocalDateTime.now());
+        }catch (TypeNotPresentException e){
+            model.addAttribute("ErrorID", 0);
+        }
+
         service.update(loanToUpdate);
         return "redirect:/ui/v1/loans/";
 
